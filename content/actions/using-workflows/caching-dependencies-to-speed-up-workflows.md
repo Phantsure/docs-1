@@ -49,7 +49,7 @@ For more information on workflow run artifacts, see "[Persisting workflow data u
 
 ## Restrictions for accessing a cache
 
-A workflow can access and restore a cache created in the current branch, the base branch (including base branches of forked repositories), or the default branch (usually `main`). For example, a cache created on the default branch would be accessible from any pull request. Also, if the branch `feature-b` has the base branch `feature-a`, a workflow triggered on `feature-b` would have access to caches created in the default branch (`main`), `feature-a`, and `feature-b`.
+A workflow can access and restore a cache created in the current branch or the default branch (usually `main`). A workflow can also access and restore a cache created in the base branch (including base branches of forked repositories), if it is triggered from a pull request. For example, a cache created on the default branch would be accessible from any branch. Also, if the branch `feature-b` has the base branch `feature-a`, a workflow triggered on a pull request on `feature-b` would have access to caches created in the default branch (`main`), `feature-a`, and `feature-b`.
 
 Access restrictions provide cache isolation and security by creating a logical boundary between different branches or tags. For example, a cache created for the branch `feature-a` (with the base `main`) would not be accessible to a pull request for the branch `feature-c` (with the base `main`). On similar lines, a cache created for the tag `release-a` (from the base `main`) would not be accessible to a workflow triggered for the tag `release-b` (with the base `main`).
 
